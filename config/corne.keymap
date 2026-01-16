@@ -30,6 +30,21 @@
             flavor = "balanced";
             tapping-term-ms = <200>;
             require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <0>;
+        };
+
+        caps_word: caps_word {
+            compatible = "zmk,behavior-caps-word";
+            label = "CAPS_WORD";
+            #binding-cells = <0>;
+            continue-list = <SPACE NUMBER_1 NUMBER_2 NUMBER_3 NUMBER_4 NUMBER_5 NUMBER_6 NUMBER_7 NUMBER_8 NUMBER_9 NUMBER_0>;
+        };
+
+        shift_caps: shift_caps {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SHIFT_CAPS";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_SHIFT>, <&caps_word>;
         };
     };
 
@@ -58,10 +73,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB                      &kp Q  &kp W  &kp E            &kp R           &kp T        &kp Y    &kp U  &kp I            &kp O    &kp P          &kp BSPC
-&hold_tap LEFT_SHIFT ESCAPE  &kp A  &kp S  &hrm LEFT_ALT D  &kp F           &kp G        &kp H    &kp J  &hrm LEFT_ALT K  &kp L    &kp SEMICOLON  &kp SQT
-&sk LEFT_CONTROL             &kp Z  &kp X  &kp C            &kp V           &kp B        &kp N    &kp M  &kp COMMA        &kp DOT  &kp FSLH       &trans
-                                           &kp LEFT_WIN     &sk LEFT_SHIFT  &kp SPACE    &kp RET  &mo 1  &mo 2
+&kp TAB       &kp Q  &kp W  &kp E            &kp R        &kp T        &kp Y    &kp U  &kp I            &kp O    &kp P          &kp BSPC
+&kp ESC       &kp A  &kp S  &hrm LEFT_ALT D  &kp F        &kp G        &kp H    &kp J  &hrm LEFT_ALT K  &kp L    &kp SEMICOLON  &kp SQT
+&kp LEFT_GUI  &kp Z  &kp X  &kp C            &kp V        &kp B        &kp N    &kp M  &kp COMMA        &kp DOT  &kp FSLH       &trans
+                            &kp LCTRL        &shift_caps  &kp SPACE    &kp RET  &mo 1  &mo 2
             >;
         };
 
@@ -74,7 +89,7 @@
 
             bindings = <
 &trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N6    &kp N7         &kp N8       &kp N9     &kp N0  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &kp LEFT  &kp DOWN       &kp UP       &kp RIGHT  &trans  &kp DELETE
+&trans  &trans  &trans  &trans  &trans  &trans    &kp LEFT  &kp DOWN       &kp UP       &kp RIGHT  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &kp HOME  &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &trans  &trans
                         &trans  &trans  &trans    &trans    &trans         &trans
             >;

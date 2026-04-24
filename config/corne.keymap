@@ -60,6 +60,16 @@
             bindings = <&kp BACKSPACE>;
             key-positions = <31 32>;
         };
+
+        minus_combo {
+            bindings = <&kp MINUS>;
+            key-positions = <18 19>;
+        };
+
+        underscore_combo {
+            bindings = <&kp UNDERSCORE>;
+            key-positions = <30 31>;
+        };
     };
 
     keymap {
